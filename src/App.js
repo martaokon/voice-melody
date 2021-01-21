@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from 'react'
+import { BrowserRouter as Router, Route, useHistory, useLocation } from 'react-router-dom'
 
-function App() {
+import { AuthContextProvider } from 'providers/AuthProvider'
+import { LoginScreen } from 'screens/LoginScreen'
+import { RegisterScreen } from 'screens/RegisterScreen'
+
+const App = () => {
+  const { pathname } = useLocation()
+  const history = useHistory()
+  const { isAuthenticated } = useContext(AuthContextProvider)
+
+  useEffect(() => {
+    if (isAuthenticated && pathname === '/login') {
+      history.push()
+    }
+  }, [pathname])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Route path="/login" component={LoginScreen} />
+      <Route path="/register" component={RegisterScreen} />
+    </Router>
+  )
 }
 
-export default App;
+export default App
