@@ -1,26 +1,28 @@
 import React, { useContext, useEffect } from 'react'
-import { BrowserRouter as Router, Route, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
-import { AuthContextProvider } from 'providers/AuthProvider'
-import { LoginScreen } from 'screens/LoginScreen'
-import { RegisterScreen } from 'screens/RegisterScreen'
+import Routes from 'Routes'
+import { AuthContext } from 'providers/AuthProvider'
+import { NavigationBar } from 'components/NavigationBar'
 
 const App = () => {
-  const { pathname } = useLocation()
+  const location = useLocation()
   const history = useHistory()
-  const { isAuthenticated } = useContext(AuthContextProvider)
+  const { isAuthenticated } = useContext(AuthContext)
+
+  const isNavigationOpen = location.pathname !== '/login' && location.pathname !== '/register'
 
   useEffect(() => {
-    if (isAuthenticated && pathname === '/login') {
-      history.push()
+    if (isAuthenticated && location.pathname === '/login') {
+      history.push('addSong')
     }
-  }, [pathname])
+  }, [location.pathname])
 
   return (
-    <Router>
-      <Route path="/login" component={LoginScreen} />
-      <Route path="/register" component={RegisterScreen} />
-    </Router>
+    <>
+      <NavigationBar isOpen={isNavigationOpen} />
+      <Routes />
+    </>
   )
 }
 
