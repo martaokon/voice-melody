@@ -1,9 +1,13 @@
 import React from 'react'
 
+import { BasicLayout } from 'layout/BasicLayout'
+
 const AccountScreen = () => {
 
   return (
-    <h1>Account</h1>
+    <BasicLayout>
+      <h1>Account</h1>
+    </BasicLayout>
   )
 }
 

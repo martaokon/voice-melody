@@ -1,5 +1,10 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import {
+  AccountCircle as AccountCircleIcon,
+  AddAlert as AddAlertIcon,
+  QueueMusic as QueueMusicIcon
+} from '@material-ui/icons'
 
 import { LoginScreen } from 'screens/LoginScreen'
 import { RegisterScreen } from 'screens/RegisterScreen'
@@ -7,13 +12,41 @@ import { AccountScreen } from 'screens/AccountScreen'
 import { AddSongScreen } from 'screens/AddSongScreen'
 import { SongsListScreen } from 'screens/SongsListScreen'
 
+export const ROUTES_LIST = [
+  {
+    path: '/login',
+    component: LoginScreen
+  },
+  {
+    path: '/register',
+    component: RegisterScreen
+  },
+  {
+    path: '/account',
+    component: AccountScreen,
+    label: 'Account',
+    icon: <AccountCircleIcon />
+  },
+  {
+    path: '/addSong',
+    component: AddSongScreen,
+    label: 'Add song',
+    icon: <AddAlertIcon />
+  },
+  {
+    path: '/songsList',
+    component: SongsListScreen,
+    label: 'Songs list',
+    icon: <QueueMusicIcon />
+  }
+]
+
 const Routes = () => (
   <Switch>
-    <Route path="/login" component={LoginScreen} />
-    <Route path="/register" component={RegisterScreen} />
-    <Route path="/account" component={AccountScreen} />
-    <Route path="/addSong" component={AddSongScreen} />
-    <Route path="/songsList" component={SongsListScreen} />
+    {ROUTES_LIST.map(({ path, component }) => (
+      <Route path={path} component={component} />
+    ))}
+    <Route path='/login' component={LoginScreen} />
     <Route path="*">
       <Redirect to="/login" />
     </Route>
