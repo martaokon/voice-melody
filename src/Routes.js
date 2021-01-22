@@ -22,12 +22,6 @@ export const ROUTES_LIST = [
     component: RegisterScreen
   },
   {
-    path: '/account',
-    component: AccountScreen,
-    label: 'Account',
-    icon: <AccountCircleIcon />
-  },
-  {
     path: '/addSong',
     component: AddSongScreen,
     label: 'Add song',
@@ -38,6 +32,12 @@ export const ROUTES_LIST = [
     component: SongsListScreen,
     label: 'Songs list',
     icon: <QueueMusicIcon />
+  },
+  {
+    path: '/account',
+    component: AccountScreen,
+    label: 'Account',
+    icon: <AccountCircleIcon />
   }
 ]
 

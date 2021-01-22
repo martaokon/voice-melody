@@ -25,7 +25,7 @@ const StyledBottomNavigation = styled(BottomNavigation)`
   min-width: 400px;
 
   &.MuiSvgIcon-root {
-    color: red;${BLUE};
+    color: ${BLUE};
   }
 `
 
@@ -39,7 +39,7 @@ const AppName = styled.h1`
   margin: ${({ theme }) => theme.spacing(2)}px;
 `
 
-const NAVIGATION_ROUTES = ['/account', '/addSong', '/songsList']
+const NAVIGATION_ROUTES = ['/addSong', '/songsList', '/account']
 
 const NavigationBar = ({ isOpen }) => {
   const { pathname } = useLocation()
@@ -48,7 +48,7 @@ const NavigationBar = ({ isOpen }) => {
 
   const navigationRoutes = ROUTES_LIST
     .filter(({ path }) => NAVIGATION_ROUTES.includes(path))
-
+  console.log(navigationRoutes)
   const navigationValue = navigationRoutes.findIndex(({ path }) => path === pathname)
 
   const handleLogoutButtonClick = () => {

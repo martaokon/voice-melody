@@ -13,7 +13,6 @@ export const darkTheme = createMuiTheme({
   palette: {
     background: {
       dark: DARK_BLUE,
-      navigationDraver: '#303645',
     },
     text: {
       navigationDraver: '#cfd2d6',
@@ -26,7 +25,7 @@ export const darkTheme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto'
   },
   overrides: {
     MuiButton: {
@@ -43,11 +42,9 @@ export const darkTheme = createMuiTheme({
         backgroundColor: BLUE,
         color: WHITE,
       },
-      containedSecondary: {
-        backgroundColor: RED,
-        border: `1px solid ${DEEPER_RED}`,
+      textSecondary: {
         color: WHITE,
-      },
+      }
     },
     MuiCheckbox: {
       colorSecondary: {
