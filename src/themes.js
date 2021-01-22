@@ -4,8 +4,7 @@ import { css } from 'styled-components/macro'
 
 export const BLUE = '#1c73ff'
 export const DARK_BLUE = '#2a3552'
-export const RED = '#ea4644'
-export const DEEPER_RED = '#d13a38'
+export const LIGHT_RED = '#ffcdcc'
 export const LIGHT_PURPLE = '#8b95b2'
 export const WHITE = '#ffffff'
 
@@ -16,13 +15,7 @@ export const darkTheme = createMuiTheme({
     },
     text: {
       navigationDraver: '#cfd2d6',
-    },
-    icon: {
-      navigationDraver: LIGHT_PURPLE,
-    },
-    border: {
-      table: LIGHT_PURPLE,
-    },
+    }
   },
   typography: {
     fontFamily: 'Roboto'
@@ -44,6 +37,10 @@ export const darkTheme = createMuiTheme({
       },
       textSecondary: {
         color: WHITE,
+      },
+      outlined: {
+        color: WHITE,
+        borderColor: WHITE
       }
     },
     MuiCheckbox: {
