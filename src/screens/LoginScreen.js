@@ -68,7 +68,7 @@ const LoginScreen = () => {
         <StyledTextField
           id="username"
           name="username"
-          type="email"
+          type="text"
           label="username"
           variant="outlined"
           value={values.username}
