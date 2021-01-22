@@ -9,8 +9,8 @@ import {
 const AccountDrawer = ({ bookmarks }) => (
   <div>
     <List>
-      {bookmarks.map(({ name, icon: Icon }) => (
-        <ListItem button key={name}>
+      {bookmarks.map(({ name, icon: Icon, onClick: handleChange }) => (
+        <ListItem button key={name} onClick={handleChange}>
           <ListItemIcon><Icon/></ListItemIcon>
           <ListItemText primary={name} />
         </ListItem>

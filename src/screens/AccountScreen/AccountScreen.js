@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Email as EmailIcon,
   Person as PersonIcon,
@@ -8,44 +8,34 @@ import {
 
 import { DrawerLayout } from 'layout/DrawerLayout'
 import { AccountDrawer } from './AccountDrawer'
+import { ChangeEmailForm } from './ChangeEmailForm'
+import { ChangeUsernameForm } from './ChangeUsernameForm'
+import { ChangePasswordForm } from './ChangePasswordForm'
+import { DeleteAccountForm } from './DeleteAccountForm'
 
 const AccountScreen = () => {
-  const handleChangeEmailClick = () => {
-
-  }
-
-  const handleChangeUsernameClick = () => {
-
-  }
-
-  const handleChangepasswordClick = () => {
-
-  }
-
-  const handleDeleteClick = () => {
-
-  }
+  const [view, setView] = useState('EMAIL')
 
   const ACCOUNT_BOOKMARKS = [
     {
       name: 'Change e-mail',
       icon: EmailIcon,
-      onClick: handleChangeEmailClick
+      onClick: () => setView('EMAIL')
     },
     {
       name: 'Change username',
       icon: PersonIcon,
-      onClick: handleChangeUsernameClick
+      onClick: () => setView('USERNAME')
     },
     {
       name: 'Change password',
       icon: VpnKeyIcon,
-      onClick: handleChangepasswordClick
+      onClick: () => setView('PASSWORD')
     },
     {
-      name: 'Delete',
+      name: 'Delete Account',
       icon: DeleteIcon,
-      onClick: handleDeleteClick
+      onClick: () => setView('DELETE')
     }
   ]
 
@@ -54,7 +44,15 @@ const AccountScreen = () => {
       header="Account Management"
       drawer={<AccountDrawer bookmarks={ACCOUNT_BOOKMARKS} />}
     >
-      content22
+      {view === 'EMAIL' ? (
+        <ChangeEmailForm />
+      ) : view === 'USERNAME' ? (
+        <ChangeUsernameForm />
+      ) : view === 'PASSWORD' ? (
+        <ChangePasswordForm />
+      ) : view === 'DELETE' ? (
+        <DeleteAccountForm />
+      ) : null}
     </DrawerLayout>
   )
 }
