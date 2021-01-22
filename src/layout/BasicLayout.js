@@ -1,6 +1,7 @@
-import { Typography } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
+import { Typography } from '@material-ui/core'
+
 import { WHITE } from 'themes'
 
 const Container = styled.div`

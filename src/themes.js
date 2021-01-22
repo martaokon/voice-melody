@@ -43,6 +43,16 @@ export const darkTheme = createMuiTheme({
         borderColor: WHITE
       }
     },
+    MuiListItemIcon: {
+      root: {
+        color: WHITE
+      }
+    },
+    MuiListItemText: {
+      root: {
+        color: WHITE
+      }
+    },
     MuiCheckbox: {
       colorSecondary: {
         '&$checked': {

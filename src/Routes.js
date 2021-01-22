@@ -8,7 +8,7 @@ import {
 
 import { LoginScreen } from 'screens/LoginScreen'
 import { RegisterScreen } from 'screens/RegisterScreen'
-import { AccountScreen } from 'screens/AccountScreen'
+import { AccountScreen } from 'screens/AccountScreen/AccountScreen'
 import { AddSongScreen } from 'screens/AddSongScreen'
 import { SongsListScreen } from 'screens/SongsListScreen'
 
