@@ -48,7 +48,7 @@ const NavigationBar = ({ isOpen }) => {
 
   const navigationRoutes = ROUTES_LIST
     .filter(({ path }) => NAVIGATION_ROUTES.includes(path))
-  console.log(navigationRoutes)
+
   const navigationValue = navigationRoutes.findIndex(({ path }) => path === pathname)
 
   const handleLogoutButtonClick = () => {

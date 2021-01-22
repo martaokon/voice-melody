@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Typography, TextField, Button } from '@material-ui/core'
+import { Typography, Button } from '@material-ui/core'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
 import { Link, useHistory } from 'react-router-dom'
@@ -7,6 +7,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { AuthContext } from 'providers/AuthProvider'
 import { CenterScreenWrapper } from 'components/CenterScreenWrapper'
 import { WHITE } from 'themes'
+import { FormTextField } from 'components/FormTextField'
 
 const Container = styled.div`
   display: flex;
@@ -27,15 +28,6 @@ const Header = styled(Typography)`
 
 const SubheaderLabel = styled.label`
   margin-bottom: ${({ theme }) => theme.spacing(4)}px;
-`
-
-const StyledTextField = styled(TextField)`
-  display: block;
-  width: 100%;
-
-  &.MuiFormControl-root {
-    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
-  }
 `
 
 const LoginScreen = () => {
@@ -65,7 +57,7 @@ const LoginScreen = () => {
           <Typography component="span">You dont have an account yet? </Typography>
           <Link to="/register">Register</Link>
         </SubheaderLabel>
-        <StyledTextField
+        <FormTextField
           id="username"
           name="username"
           type="text"
@@ -74,7 +66,7 @@ const LoginScreen = () => {
           value={values.username}
           onChange={handleChange}
         />
-        <StyledTextField
+        <FormTextField
           id="password"
           name="password"
           type="password"

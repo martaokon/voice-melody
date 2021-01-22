@@ -4,6 +4,12 @@ import { BasicLayout } from './BasicLayout'
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
+  max-width: 760px;
+`
+
+const DrawerWrapper = styled.div`
+  flex: 300px;
 `
 
 const Content = styled.div`
@@ -13,7 +19,7 @@ const Content = styled.div`
 const DrawerLayout = ({ header, drawer, children }) => (
   <BasicLayout header={header}>
     <Container>
-      <div>{drawer}</div>
+      <DrawerWrapper>{drawer}</DrawerWrapper>
       <Content>{children}</Content>
     </Container>
   </BasicLayout>

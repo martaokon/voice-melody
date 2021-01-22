@@ -44,7 +44,7 @@ export const ROUTES_LIST = [
 const Routes = () => (
   <Switch>
     {ROUTES_LIST.map(({ path, component }) => (
-      <Route path={path} component={component} />
+      <Route key={path} path={path} component={component} />
     ))}
     <Route path='/login' component={LoginScreen} />
     <Route path="*">

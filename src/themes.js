@@ -53,28 +53,6 @@ export const darkTheme = createMuiTheme({
         color: WHITE
       }
     },
-    MuiCheckbox: {
-      colorSecondary: {
-        '&$checked': {
-          color: BLUE,
-        }
-      },
-    },
-    MuiSwitch: {
-      colorPrimary: {
-        '&$checked': {
-          color: BLUE,
-        }
-      },
-    },
-    MuiCircularProgress: {
-      root: {
-        padding: '4px',
-      },
-      colorPrimary: {
-        color: BLUE,
-      }
-    },
     MuiBottomNavigationAction: {
       root: {
         '&$selected': {

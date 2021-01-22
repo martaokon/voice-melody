@@ -24,9 +24,9 @@ const StyledButton = styled(Button)`
 `
 
 const DeleteButton = styled(Button)`
-&.MuiButtonBase-root {
-  color: ${LIGHT_RED};
-}
+  &.MuiButtonBase-root {
+    color: ${LIGHT_RED};
+  }
 `
 
 const SongsListScreen = () => {

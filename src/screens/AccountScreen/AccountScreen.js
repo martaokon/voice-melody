@@ -8,10 +8,10 @@ import {
 
 import { DrawerLayout } from 'layout/DrawerLayout'
 import { AccountDrawer } from './AccountDrawer'
-import { ChangeEmailForm } from './ChangeEmailForm'
-import { ChangeUsernameForm } from './ChangeUsernameForm'
-import { ChangePasswordForm } from './ChangePasswordForm'
-import { DeleteAccountForm } from './DeleteAccountForm'
+import { ChangeEmailForm } from './forms/ChangeEmailForm'
+import { ChangeUsernameForm } from './forms/ChangeUsernameForm'
+import { ChangePasswordForm } from './forms/ChangePasswordForm'
+import { DeleteAccountForm } from './forms/DeleteAccountForm'
 
 const AccountScreen = () => {
   const [view, setView] = useState('EMAIL')
@@ -20,22 +20,26 @@ const AccountScreen = () => {
     {
       name: 'Change e-mail',
       icon: EmailIcon,
-      onClick: () => setView('EMAIL')
+      onClick: () => setView('EMAIL'),
+      isActive: view === 'EMAIL'
     },
     {
       name: 'Change username',
       icon: PersonIcon,
-      onClick: () => setView('USERNAME')
+      onClick: () => setView('USERNAME'),
+      isActive: view === 'USERNAME'
     },
     {
       name: 'Change password',
       icon: VpnKeyIcon,
-      onClick: () => setView('PASSWORD')
+      onClick: () => setView('PASSWORD'),
+      isActive: view === 'PASSWORD'
     },
     {
       name: 'Delete Account',
       icon: DeleteIcon,
-      onClick: () => setView('DELETE')
+      onClick: () => setView('DELETE'),
+      isActive: view === 'DELETE'
     }
   ]
 

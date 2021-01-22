@@ -1,11 +1,12 @@
 import React from 'react'
-import { Typography, TextField, Button } from '@material-ui/core'
+import { Typography, Button } from '@material-ui/core'
 import styled from 'styled-components'
 import { useFormik } from 'formik'
 import { Link, useHistory } from 'react-router-dom'
 
 import { CenterScreenWrapper } from 'components/CenterScreenWrapper'
 import { WHITE } from 'themes'
+import { FormTextField } from 'components/FormTextField'
 
 const Container = styled.div`
   display: flex;
@@ -26,15 +27,6 @@ const Header = styled(Typography)`
 
 const SubheaderLabel = styled.label`
   margin-bottom: ${({ theme }) => theme.spacing(4)}px;
-`
-
-const StyledTextField = styled(TextField)`
-  display: block;
-  width: 100%;
-
-  &.MuiFormControl-root {
-    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
-  }
 `
 
 const RegisterScreen = () => {
@@ -64,7 +56,7 @@ const RegisterScreen = () => {
           <Typography component="span">Do you already have an account? </Typography>
           <Link to="/login">Log in</Link>
         </SubheaderLabel>
-        <StyledTextField
+        <FormTextField
           id="username"
           name="username"
           type="text"
@@ -73,7 +65,7 @@ const RegisterScreen = () => {
           value={values.username}
           onChange={handleChange}
         />
-        <StyledTextField
+        <FormTextField
           id="email"
           name="email"
           type="email"
@@ -82,7 +74,7 @@ const RegisterScreen = () => {
           value={values.email}
           onChange={handleChange}
         />
-        <StyledTextField
+        <FormTextField
           id="password"
           name="password"
           type="password"
