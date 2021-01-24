@@ -5,7 +5,7 @@ import { BasicLayout } from "layout/BasicLayout";
 import { Dropzone } from "components/Dropzone";
 import { Notification } from "components/Notification";
 import { Button } from "@material-ui/core";
-import { getSongs, sendFile } from "utils/apiClient";
+import { sendFile } from "utils/apiClient";
 
 const Footer = styled.div`
   text-align: right;
@@ -46,10 +46,15 @@ const AddSongScreen = () => {
       />
       <Dropzone onDrop={handleDrop} fileName={file?.name} />
       <Footer>
-        <SecondButton onClick={onFileSent} color="secondary">
-          Separate
-        </SecondButton>
-        <Button color="secondary">Upload</Button>
+        {file?.name && (
+          <SecondButton
+            onClick={onFileSent}
+            color="primary"
+            variant="contained"
+          >
+            Separate
+          </SecondButton>
+        )}
       </Footer>
     </BasicLayout>
   );

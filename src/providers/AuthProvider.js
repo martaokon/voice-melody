@@ -1,37 +1,63 @@
-import React, { createContext, useState, useMemo } from 'react'
+import { Notification } from "components/Notification";
+import React, { createContext, useState, useMemo } from "react";
+import { checkToken, login, logout, register } from "utils/apiClient";
 
-export const AuthContext = createContext(null)
+export const AuthContext = createContext(null);
 
 const AuthContextProvider = ({ children }) => {
-  const [username, setUsername] = useState(null)
-  const [token, setToken] = useState(null) // TODO
-
-  const isAuthenticated = useMemo(() => !!(username && token), [username, token])
+  const [username, setUsername] = useState(null);
+  const [isLoginError, setIsLoginError] = useState(false);
+  const [registerError, setRegisterError] = useState(null);
+  const isAuthenticated = useMemo(() => !!username || checkToken(setUsername), [
+    username,
+  ]);
 
   const handleLogout = () => {
-    setUsername(null)
-    setToken(null)
-  }
+    setUsername(null);
+    logout();
+  };
 
-  const handleLogin = (username, password) => {
-    //TODO
-    setUsername(username)
-    setToken('some token')
-  }
+  const handleLogin = async (username, password) => {
+    try {
+      await login({ username, password });
+      setUsername(username);
+    } catch (error) {
+      setIsLoginError(true);
+      throw error;
+    }
+  };
+
+  const handleRegister = async ({ username, email, password }) => {
+    setRegisterError(null);
+    try {
+      await register({ username, email, password });
+      setUsername(username);
+    } catch (error) {
+      setRegisterError(error);
+      throw error;
+    }
+  };
 
   return (
     <AuthContext.Provider
       value={{
         username,
-        token,
+        registerError,
+        handleRegister,
         isAuthenticated,
         handleLogout,
-        handleLogin
+        handleLogin,
       }}
     >
       {children}
+      <Notification
+        setOpen={setIsLoginError}
+        open={!!isLoginError}
+        text={"Incorrect login or password"}
+        severity="error"
+      />
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export { AuthContextProvider }
+export { AuthContextProvider };
