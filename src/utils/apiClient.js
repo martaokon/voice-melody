@@ -1,12 +1,12 @@
 import axios from "axios";
 import { createRefreshInterceptor } from "utils/refereshInterceptor";
 
-const base = "http://127.0.0.1:1337";
+const base = "http://34.107.74.0:1337";
 export const getMediaUrl = (path) => (!!path ? `${base}/${path}` : "");
 const baseURL = `${base}/api`;
 const axiosInstance = axios.create({
   baseURL,
-  timeout: 5000,
+  timeout: 60000,
   headers: {
     Authorization: "JWT " + localStorage.getItem("access_token"),
   },
