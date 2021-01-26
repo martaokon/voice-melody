@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BasicLayout } from "layout/BasicLayout";
 import { Dropzone } from "components/Dropzone";
 import { Notification } from "components/Notification";
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import { sendFile } from "utils/apiClient";
 
 const Footer = styled.div`
@@ -19,6 +19,7 @@ const SecondButton = styled(Button)`
 
 const AddSongScreen = () => {
   const [file, setFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [notificationOpen, setNotificationOpen] = React.useState(false);
 
@@ -29,8 +30,10 @@ const AddSongScreen = () => {
   const onFileSent = useCallback(() => {
     if (!file) return;
 
+    setLoading(true);
     sendFile(file).then(() => {
       setNotificationOpen(true);
+      setLoading(false);
       setFile(null);
     });
   }, [file]);
@@ -46,14 +49,18 @@ const AddSongScreen = () => {
       />
       <Dropzone onDrop={handleDrop} fileName={file?.name} />
       <Footer>
-        {file?.name && (
-          <SecondButton
-            onClick={onFileSent}
-            color="primary"
-            variant="contained"
-          >
-            Separate
-          </SecondButton>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          file?.name && (
+            <SecondButton
+              onClick={onFileSent}
+              color="primary"
+              variant="contained"
+            >
+              Separate
+            </SecondButton>
+          )
         )}
       </Footer>
     </BasicLayout>
